@@ -1,0 +1,26 @@
+LOCAL:
+git init -> initialize git empty repository here
+git status -> show files that are tracked/untracked and ready to commit. If all is commited shows no files. Shows on which branch are u currently.
+git add <nazwa pliku> -> add this file to commit"able"
+git commit -> moves to notepad++, shows changes to make, you can add a message to that commit, save and exit -> commited
+git commit -m 'nazwa_zmiany' -> you don't have to go to notepad ++
+git log -> history of commits (very useful when working with other devs)
+git add . -> add all
+git add *.html -> add all with ending html
+touch .gitignore -> files to ignore by git // in .gitignore list files that u dont want to add
+git branch <nazwa_branchu> -> adds a branch (copy of the original file to work on).
+git checkout <nazwa_branchu> -> switch to this branch // master = main branch
+git merge <sourceBranch> -> You have to be currently in the DESTINATION branch.
+git commit -a -m 'nazwa_commitu' -> automatically stage all files and commit, but new files must be added manually using git add.
+merge can cause conflicts (when in both branches are different changes).
+git mergetool (need to install sth like winmerge or tortisemerge).
+git stash -> save unfinished work if you are not ready to commit them yet and want to swap to another branch.
+git stash apply -> when coming back to a file and want to recover unfinished work.
+
+REMOTE:
+git remote -> list of existing remote repositories
+git clone <url of a repository> -> downloads a repository then cd to that folder and git remote shows sth, git remote -v shows URL
+git fetch origin -> gets from server all changes that were made since last clone or fetch, but have to merge them manually
+git pull origin ->fetches and merges all the changes from remote branch to your current branch
+git push origin master -> push our changes to the remote repository known to us as origin and commit them to the master branch
+git remote add <nazwa_repo> <url> -> to add additional remote repository
