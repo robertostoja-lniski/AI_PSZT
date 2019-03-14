@@ -9,7 +9,6 @@ public class Point {
     private double y;
     private double sigX;
     private double sigY;
-    private double fitness;
 
     public Point(){
      random = new Random();
@@ -17,7 +16,14 @@ public class Point {
      y = random.nextDouble()*Main.RANGE_Y - 100;
      sigX = Main.RANGE_X*0.01;
      sigY = Main.RANGE_Y*0.01;
-     fitness = 0;
+    }
+
+    public Point(double x, double y, double sigX, double sigY) { //dodalem to dla metody crossOver.
+        random = new Random();
+        this.x = x;
+        this.y = y;
+        this.sigX = sigX;
+        this.sigY = sigY;
     }
 
     public double getX() {
@@ -36,11 +42,13 @@ public class Point {
         return sigY;
     }
 
-    public double getFitness() {
-        return fitness;
+
+    // SETTERY DLA MUTACJI
+    public void setX(double x) {
+        this.x = x;
     }
 
-    public void setFitness(double fitness) {
-        this.fitness = fitness;
+    public void setY(double y) {
+        this.y = y;
     }
 }
