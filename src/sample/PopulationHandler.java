@@ -12,6 +12,7 @@ public class PopulationHandler {
 
 
     public PopulationHandler(){
+
         population = new ArrayList<>();
         matingPool = new ArrayList<>();
         random = new Random();
