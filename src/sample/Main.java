@@ -1,7 +1,9 @@
 package sample;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.NumberAxis;
@@ -19,19 +21,25 @@ public class Main extends Application {
 
         // kod zakomentowany jest przed zmiana
 
-       /* Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Project PSZT");
         primaryStage.setResizable(false);
+
+        PopulationHandler population = new PopulationHandler();
+        population.generateFirstPopulation();
+
+
+        startAnimating();
         primaryStage.setScene(new Scene(root, 600, 600));
-        primaryStage.show(); */
+        primaryStage.show();
 
 
 
-       // tworze dwie osie, oraz instancje klasy populationChart -
-       // odpowiednik widoku - klase ktora rysuje przepiekne wykresy :)
+        // tworze dwie osie, oraz instancje klasy populationChart -
+        // odpowiednik widoku - klase ktora rysuje przepiekne wykresy :)
 
 
-        primaryStage.setTitle("Chart");
+      /*  primaryStage.setTitle("Chart");
 
         final Axis<Number> xAxis = new NumberAxis(-10, 10, 2);
         final Axis<Number> yAxis = new NumberAxis(-10, 10, 2);
@@ -41,10 +49,19 @@ public class Main extends Application {
 
         Scene scene  = new Scene(populationChart);
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();*/
 
     }
 
+
+    private void startAnimating(){
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                System.out.println();
+            }
+        };
+    }
 
     public static void main(String[] args) {
         launch(args);
