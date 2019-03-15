@@ -13,8 +13,9 @@ public class Main extends Application {
 
     public static final int RANGE_X = 20; // RANDOM COORDINATES FROM -100 TO 100;
     public static final int RANGE_Y = RANGE_X;  // CHANGABLE IF NEEDED.
-    public static final int POPULATION_SIZE = 1000;
-    public static final double MUTATION_RATE = 0.01;
+    public static final int POPULATION_SIZE = 10000;
+    public static final int DIMENSION = 2;
+    public static final double MUTATION_RATE = 0.0001;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -25,13 +26,27 @@ public class Main extends Application {
         primaryStage.setTitle("Project PSZT");
         primaryStage.setResizable(false);
 
+        primaryStage.setTitle("Chart");
+
+        final Axis<Number> xAxis = new NumberAxis(-10, 10, 2);
+        final Axis<Number> yAxis = new NumberAxis(-10, 10, 2);
+
+        PopulationChart populationChart  = new PopulationChart(xAxis,yAxis);
+
         PopulationHandler population = new PopulationHandler();
         population.generateFirstPopulation();
 
+        for (int i = 0; i < 100; i ++) {
 
-        startAnimating();
+            population.run();
+            Thread.sleep(100);
+
+        }
+
+
+       /* startAnimating();
         primaryStage.setScene(new Scene(root, 600, 600));
-        primaryStage.show();
+        primaryStage.show(); */
 
 
 
@@ -39,17 +54,10 @@ public class Main extends Application {
         // odpowiednik widoku - klase ktora rysuje przepiekne wykresy :)
 
 
-      /*  primaryStage.setTitle("Chart");
-
-        final Axis<Number> xAxis = new NumberAxis(-10, 10, 2);
-        final Axis<Number> yAxis = new NumberAxis(-10, 10, 2);
-
-        PopulationChart populationChart  = new PopulationChart(xAxis,yAxis);
-        populationChart.setDefaultValues();
-
+        populationChart.setValues(population.getPopulation());
         Scene scene  = new Scene(populationChart);
         primaryStage.setScene(scene);
-        primaryStage.show();*/
+        primaryStage.show();
 
     }
 

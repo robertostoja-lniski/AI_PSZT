@@ -4,6 +4,7 @@ import javafx.scene.chart.Axis;
 import javafx.scene.chart.BubbleChart;
 import javafx.scene.chart.XYChart;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class PopulationChart extends BubbleChart {
@@ -59,5 +60,23 @@ public class PopulationChart extends BubbleChart {
         }
 
         this.getData().addAll(series1, series2, series3);
+    }
+    /*
+        Funkcja rysuje to co dostala jako argument wejsciowy
+
+     */
+    public void setValues(ArrayList<Individual> populationToPrint) {
+
+        XYChart.Series series = new XYChart.Series();
+
+        for(Individual i : populationToPrint ){
+
+            double x = i.getPoint().getX();
+            double y = i.getPoint().getY();
+
+            series.getData().add(new XYChart.Data( x , y , 0.2));
+        }
+
+        this.getData().addAll(series);
     }
 }

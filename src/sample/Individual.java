@@ -12,6 +12,16 @@ public class Individual {
         this.value = value;
     }
 
+    // nowy konstruktor rozwiazuje problemy z funkcji generate population
+    // klasy population handler
+
+    public Individual(Point point, double value) {
+
+        this.point = point;
+        this.fitness = 0;
+        this.value = value;
+    }
+
     public Point getPoint() {
         return point;
     }

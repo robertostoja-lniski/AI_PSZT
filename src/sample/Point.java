@@ -11,11 +11,11 @@ public class Point {
     private double sigY;
 
     public Point(){
-     random = new Random();
-     x = random.nextDouble()*Main.RANGE_X - 100;
-     y = random.nextDouble()*Main.RANGE_Y - 100;
-     sigX = Main.RANGE_X*0.01;
-     sigY = Main.RANGE_Y*0.01;
+        random = new Random();
+        x = random.nextDouble()*Main.RANGE_X - 10;
+        y = random.nextDouble()*Main.RANGE_Y - 10;
+        sigX = Main.RANGE_X*0.1;
+        sigY = Main.RANGE_Y*0.1;
     }
 
     public Point(double x, double y, double sigX, double sigY) { //dodalem to dla metody crossOver.
