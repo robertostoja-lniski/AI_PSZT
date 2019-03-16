@@ -36,17 +36,17 @@ public class Main extends Application {
         PopulationHandler population = new PopulationHandler();
         population.generateFirstPopulation();
 
+
+
+       /* startAnimating();
+        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.show(); */
         for (int i = 0; i < 100; i ++) {
 
             population.run();
             Thread.sleep(100);
 
         }
-
-
-       /* startAnimating();
-        primaryStage.setScene(new Scene(root, 600, 600));
-        primaryStage.show(); */
 
 
 

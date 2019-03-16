@@ -5,7 +5,7 @@ public class Function {
 
     public static double calculateValue(Point point){
 
-        return Math.sin(point.getX()) + Math.cos(point.getY());
+        return Math.sin(point.getX()) + Math.sin(point.getY());
         //TODO
     }
 }

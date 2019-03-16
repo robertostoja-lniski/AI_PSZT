@@ -5,11 +5,15 @@ public class Individual {
     private Point point;
     private double fitness;
     private double value;
+    private int goodSteps;
+    private int allSteps;
 
     public Individual(Point point, double fitness, double value){
         this.point = point;
         this.fitness = fitness;
         this.value = value;
+        goodSteps = 0;
+        allSteps = 0;
     }
 
     // nowy konstruktor rozwiazuje problemy z funkcji generate population
@@ -38,7 +42,23 @@ public class Individual {
         this.value = value;
     }
 
-    public void setFitness(double fitness){
-        this.fitness = fitness;
+    public void updateFitness(){
+        fitness = goodSteps/allSteps;
+    }
+
+    public int getGoodSteps() {
+        return goodSteps;
+    }
+
+    public int getAllSteps() {
+        return allSteps;
+    }
+
+    public void setGoodSteps(int goodSteps) {
+        this.goodSteps = goodSteps;
+    }
+
+    public void setAllSteps(int allSteps) {
+        this.allSteps = allSteps;
     }
 }
