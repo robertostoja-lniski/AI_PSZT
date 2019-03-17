@@ -26,6 +26,14 @@ public class Point {
         this.sigY = sigY;
     }
 
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+        sigX = Main.RANGE_X*0.1;
+        sigY = Main.RANGE_Y*0.1;
+        random = new Random();
+    }
+
     public double getX() {
         return x;
     }
@@ -42,13 +50,19 @@ public class Point {
         return sigY;
     }
 
-
-    // SETTERY DLA MUTACJI
     public void setX(double x) {
         this.x = x;
     }
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public void setSigX(double sigX) {
+        this.sigX = sigX;
+    }
+
+    public void setSigY(double sigY) {
+        this.sigY = sigY;
     }
 }

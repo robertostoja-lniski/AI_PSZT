@@ -13,9 +13,8 @@ public class Main extends Application {
 
     public static final int RANGE_X = 20; // RANDOM COORDINATES FROM -100 TO 100;
     public static final int RANGE_Y = RANGE_X;  // CHANGABLE IF NEEDED.
-    public static final int POPULATION_SIZE = 10000;
+    public static final int POPULATION_SIZE = RANGE_X*RANGE_Y;  // po 1 na kazdy kwadracik.
     public static final int DIMENSION = 2;
-    public static final double MUTATION_RATE = 0.0001;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -44,7 +43,7 @@ public class Main extends Application {
         for (int i = 0; i < 100; i ++) {
 
             population.run();
-            Thread.sleep(100);
+           // Thread.sleep(100);
 
         }
 
@@ -53,6 +52,7 @@ public class Main extends Application {
         // tworze dwie osie, oraz instancje klasy populationChart -
         // odpowiednik widoku - klase ktora rysuje przepiekne wykresy :)
 
+        population.showAllPointsWithValues();
 
         populationChart.setValues(population.getPopulation());
         Scene scene  = new Scene(populationChart);

@@ -43,7 +43,7 @@ public class Individual {
     }
 
     public void updateFitness(){
-        fitness = goodSteps/allSteps;
+        fitness = (double)goodSteps/(double)allSteps;
     }
 
     public int getGoodSteps() {
@@ -60,5 +60,10 @@ public class Individual {
 
     public void setAllSteps(int allSteps) {
         this.allSteps = allSteps;
+    }
+
+    @Override
+    public String toString(){
+        return "x: " + point.getX() + " |  y: " + point.getY() + " | value: " + value + " | fi: "+ fitness;
     }
 }

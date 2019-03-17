@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Evolver {
 
+    //TODO OBECNIE NAJGORSZY CHYBA PROBLEM: WYJEZDZAMY POZA WYBRANY PRZEDZIAL NP: [0;10]x[0;10] WYNIKI WYCHODZA SPOKO, ALE W OKOLICACH NP. X = -150, Y=48
+    //TODO POTRZEBA ZMIENIC METODE LOSUJACA PUNKTY TAK, BY ZAWSZE LOSOWALO PUNKTY TYLKO Z PRZEDZIALU.
     private Random random;
 
     public Evolver(){
@@ -15,7 +17,7 @@ public class Evolver {
 
         double xCoor = random.nextDouble()*individual.getPoint().getSigX()*2 - individual.getPoint().getSigX(); //random x movement.
         double yCoor = random.nextDouble()*individual.getPoint().getSigX()*2 - individual.getPoint().getSigY(); // random y movement.
-        Point pointToCheckValue = new Point(xCoor,yCoor,0.5,0.5); // sigmas doesn't matter
+        Point pointToCheckValue = new Point(xCoor,yCoor); // sigmas doesn't matter
 
         if  (Function.calculateValue(pointToCheckValue) > individual.getValue())
         {
@@ -29,19 +31,23 @@ public class Evolver {
         individual.updateFitness();    // updates fitness after amount of steps was added.
 
         if (individual.getFitness() > 0.2)
-            increaseSigmas();
+            increaseSigmas(individual);
         else if (individual.getFitness() < 0.2)
-            decreaseSigmas();
+            decreaseSigmas(individual);
 
 
     }
 
-    public void increaseSigmas(){
-     //TODO
+    public void increaseSigmas(Individual individual){
+
+        individual.getPoint().setSigX(individual.getPoint().getSigX()+0.3);
+        individual.getPoint().setSigY(individual.getPoint().getSigY()+0.3);
+
     }
 
-    public void decreaseSigmas(){
-        //TODO
+    public void decreaseSigmas(Individual individual){
+        individual.getPoint().setSigX(individual.getPoint().getSigX()-0.3);
+        individual.getPoint().setSigX(individual.getPoint().getSigX()-0.3);
     }
 
 }
