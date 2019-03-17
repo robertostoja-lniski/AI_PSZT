@@ -29,8 +29,8 @@ public class Point {
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
-        sigX = Main.RANGE_X*0.1;
-        sigY = Main.RANGE_Y*0.1;
+        sigX = Main.RANGE_X*0.3;
+        sigY = Main.RANGE_Y*0.3;
         random = new Random();
     }
 

@@ -24,9 +24,9 @@ public class PopulationHandler {
 
     public void generateFirstPopulation() {
 
-        for (int i = 0; i < Main.RANGE_X; i++) {
+        for (int i = -Main.RANGE_X/2; i <= Main.RANGE_X/2; i++) {
 
-            for (int j = 0; j < Main.RANGE_Y; j++) {
+            for (int j = -Main.RANGE_Y/2; j <= Main.RANGE_Y/2; j++) {
 
                 Point argumentPoint = new Point(i, j);   // new Point for every small square
                 double value = Function.calculateValue(argumentPoint);  //set value to this point

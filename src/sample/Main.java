@@ -35,12 +35,12 @@ public class Main extends Application {
         PopulationHandler population = new PopulationHandler();
         population.generateFirstPopulation();
 
-
+        //populationChart.setValues(population.getPopulation());
 
        /* startAnimating();
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show(); */
-        for (int i = 0; i < 100; i ++) {
+        for (int i = 0; i < 10000; i ++) {
 
             population.run();
            // Thread.sleep(100);
