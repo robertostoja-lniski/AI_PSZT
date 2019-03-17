@@ -6,11 +6,14 @@ public class Evolver {
 
     //TODO OBECNIE NAJGORSZY CHYBA PROBLEM: WYJEZDZAMY POZA WYBRANY PRZEDZIAL NP: [0;10]x[0;10] WYNIKI WYCHODZA SPOKO, ALE W OKOLICACH NP. X = -150, Y=48
     //TODO POTRZEBA ZMIENIC METODE LOSUJACA PUNKTY TAK, BY ZAWSZE LOSOWALO PUNKTY TYLKO Z PRZEDZIALU.
+    private static final int M = 10;// m z wykladu : co ile iteracji nalezy zmienic sigme.
     private Random random;
+    private int counter;
 
     public Evolver(){
 
         random = new Random();
+        counter = 0;
     }
 
     public void StepForwardOrDontMove(Individual individual){
@@ -28,26 +31,31 @@ public class Evolver {
         }
         individual.setAllSteps(individual.getAllSteps()+1); //increasing all steps
 
-        individual.updateFitness();    // updates fitness after amount of steps was added.
 
-        if (individual.getFitness() > 0.2)
-            increaseSigmas(individual);
-        else if (individual.getFitness() < 0.2)
-            decreaseSigmas(individual);
+        if (counter++% M == 0){
+
+            individual.updateFitness();    // updates fitness after amount of steps was added.
+
+            if (individual.getFitness() > 0.2)
+                increaseSigmas(individual);
+            else if (individual.getFitness() < 0.2)
+                decreaseSigmas(individual);
+
+        }
 
 
     }
 
     public void increaseSigmas(Individual individual){
 
-        individual.getPoint().setSigX(individual.getPoint().getSigX()+0.3);
-        individual.getPoint().setSigY(individual.getPoint().getSigY()+0.3);
+        individual.getPoint().setSigX(individual.getPoint().getSigX()*1.2);
+        individual.getPoint().setSigY(individual.getPoint().getSigY()*1.2);
 
     }
 
     public void decreaseSigmas(Individual individual){
-        individual.getPoint().setSigX(individual.getPoint().getSigX()-0.3);
-        individual.getPoint().setSigX(individual.getPoint().getSigX()-0.3);
+        individual.getPoint().setSigX(individual.getPoint().getSigX()*0.82);
+        individual.getPoint().setSigX(individual.getPoint().getSigX()*0.82);
     }
 
 }
