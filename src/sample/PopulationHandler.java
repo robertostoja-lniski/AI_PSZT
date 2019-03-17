@@ -44,7 +44,7 @@ public class PopulationHandler {
 
     public void run() {
         for (Individual ind: population){
-                evolver.StepForwardOrDontMove(ind);
+                evolver.stepForwardOrDontMove(ind);
         }
     }
 
