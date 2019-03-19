@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Function;
+import sample.Main;
 import sample.PopulationChart;
 import sample.PopulationHandler;
 
@@ -51,24 +52,26 @@ public class Controller{
 
 
     public void init(int functionOption){
+
+        Function chosenFunction = new Function( functionOption );
+
+        PopulationHandler populationToFindMax = new PopulationHandler( chosenFunction, Main.extremeType.MAX);
+        populationToFindMax.generateFirstPopulation();
+
+        PopulationHandler populationToFindMin = new PopulationHandler( chosenFunction, Main.extremeType.MIN);
+        populationToFindMin.generateFirstPopulation();
+
         final Axis<Number> xAxis = new NumberAxis( A, B , X_TICKS );
         final Axis<Number> yAxis = new NumberAxis( C, D , Y_TICKS );
 
         PopulationChart populationChart  = new PopulationChart(xAxis,yAxis);
-
-        PopulationHandler populationToFindMax = new PopulationHandler( true,functionOption );
-        populationToFindMax.generateFirstPopulation();
-
-        PopulationHandler populationToFindMin = new PopulationHandler( false, functionOption);
-        populationToFindMin.generateFirstPopulation();
-
 
         Stage chartStage = new Stage();
         Scene scene  = new Scene(populationChart);
         chartStage.setScene(scene);
         chartStage.show();
 
-        for (int i = 0; i < 1000; i ++) {
+        for (int i = 0; i < Main.GENERATION_NUMBER; i ++) {
 
             populationToFindMax.run();
             populationToFindMin.run();
@@ -76,6 +79,7 @@ public class Controller{
 
         populationChart.setValuesToFindMax(populationToFindMax.getPopulation());
         populationChart.setValuesToFindMin(populationToFindMin.getPopulation());
+       // populationToFindMin.showAllPointsWithValues();
     }
     @FXML
     void handlebt1(ActionEvent event) {

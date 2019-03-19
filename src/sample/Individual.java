@@ -12,8 +12,10 @@ public class Individual extends Point{
     private double value;
     private int goodSteps;
     private int allSteps;
-    private boolean minOrMax;
-    private int functionOption;
+    //enum zastepuje minOrMax
+    //private boolean minOrMax;
+    private Main.extremeType extremeType;
+    private Function function;
 
     /*
         konstruktory wywoluja konstruktor klasy bazowej i tyle
@@ -21,11 +23,16 @@ public class Individual extends Point{
     // nie powinno tu byc chyba tego min or max
     // wyglada dziwnie, ale postaram sie zmienic za jakis czas
 
-    public Individual(double x, double y, double sigX , double sigY, boolean minOrMax,int functionOption) {
+    public Individual(double x, double y, double sigX , double sigY, Main.extremeType extremeType, Function function) {
 
         super( x,  y,  sigX,  sigY);
-        this.minOrMax = minOrMax;
-        value = minOrMax ? calculateValue(this,functionOption) : -calculateValue(this,functionOption);
+        this.extremeType = extremeType;
+        // szukanie minimum upraszcza sie do
+        // szukania maksimum funkcji pomnozonej przez -1
+
+        this.function = function;
+        value = function.calculateValue(this) * ( extremeType == Main.extremeType.MAX ? 1 : -1 );
+
 
     }
 
@@ -34,24 +41,18 @@ public class Individual extends Point{
     ale nie dziala individual = child
     jak ogarne czemu tak jest to zmienie
      */
-    public void normaliseValues( double minX, double maxX, double minY, double maxY) {
 
-        // x nie większy niż najwiekszy mozliwy x
-        x = Math.min( x , maxX);
-        // x nie mniejszy niz najmniejszy mozliwy x
-        x = Math.max( x , minX);
-        // analogicznie dla y
-        y = Math.min( y , maxY);
-        y = Math.max( y , minY);
-    }
     public void becomeAChild(Individual child) {
 
+        // copies base class properties
         this.x = child.getX();
         this.y = child.getY();
         this.sigX = child.getSigX();
         this.sigY = child.getSigY();
+        // copies algorithm properties
         this.goodSteps = child.getGoodSteps();
         this.allSteps = child.getAllSteps();
+        // copies value and fitness
         this.value = child.getValue();
         this.fitness = child.getFitness();
 
@@ -106,7 +107,7 @@ public class Individual extends Point{
         double childX =  x + sigX * random.nextGaussian();
         double childY = y + sigY * random.nextGaussian();
 
-        return new Individual( childX , childY , sigX, sigY, this.minOrMax,functionOption);
+        return new Individual( childX , childY , sigX, sigY, this.extremeType, function);
 
     }
 

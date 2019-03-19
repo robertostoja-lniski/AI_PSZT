@@ -26,45 +26,17 @@ public class PopulationChart extends BubbleChart {
 
         xAxis.setLabel("X");
         yAxis.setLabel("Y");
+
+        seriesMax.setName("Maxima");
+        seriesMin.setName("Minima");
+
         this.setTitle("Populacja");
 
     }
 
-    public void setDefaultValues() {
+    private boolean isBetween( double number, double lowerNumber, double higherNumber) {
 
-
-        XYChart.Series series1 = new XYChart.Series();
-        XYChart.Series series2 = new XYChart.Series();
-        XYChart.Series series3 = new XYChart.Series();
-
-        Random random = new Random();
-
-        for (int i = 0 ; i < 500; ++i) {
-
-            double x = random.nextDouble() * Main.RANGE_X + Main.A;
-            double y = random.nextDouble() * Main.RANGE_Y + Main.C;
-
-            // jesli w odleglosci maksymalnie 4 od srodka
-            // kolor czerwony
-            // jesli od 4 do 8 zolty
-            // jesli dalej zielony
-
-            if( x * x + y * y <= 16) {
-
-                series1.getData().add(new XYChart.Data( x , y , 0.2));
-
-            } else if( x * x + y * y <= 64) {
-
-                series2.getData().add(new XYChart.Data( x , y , 0.2));
-
-            } else {
-
-                series3.getData().add(new XYChart.Data( x , y , 0.2));
-            }
-
-        }
-
-        this.getData().addAll(series1, series2, series3);
+        return ( number >= lowerNumber ) && ( number <= higherNumber );
     }
     /*
         Funkcja rysuje to co dostala jako argument wejsciowy
@@ -74,10 +46,26 @@ public class PopulationChart extends BubbleChart {
 
         for(Individual i : populationToPrint ){
 
-            double x = i.getX();
-            double y = i.getY();
+            // sprawdzanie czy osobnik nalezy do zakresu
+            // algorytm akceptuje osobników spoza zakresu, poniewaz
+            // moze sie zdarzyc, ze w wyniku mutacji jego dziecko
+            // bedzie lezalo do odpowiedniej plaszczyzny
 
-            series.getData().add(new XYChart.Data( x , y , 0.2));
+          /*  double x = i.getX();
+            if ( isBetween( x , Main.A, Main.B ) ) {
+
+                double y = i.getY();
+                if( isBetween( y , Main.C, Main.D ) ) {
+
+                    series.getData().add(new XYChart.Data( x , y , 0.2));
+                }
+            } */
+
+          double x = i.getX();
+          double y = i.getY();
+
+          series.getData().add(new XYChart.Data( x , y , 0.2));
+
         }
 
         this.getData().addAll(series);

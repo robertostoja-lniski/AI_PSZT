@@ -9,17 +9,21 @@ public class PopulationHandler {
     private Random random; // do losowania z koszyczka
     private Evolver evolver;
     // parametr do wyboru rodzaju ekstremum
-    private boolean minOrMax;
-    private int functionOption;
+    // wieksza czytelnosc w wypadku enum
+    private Main.extremeType extremeType;
+    private Function chosenFunction;
 
-    public PopulationHandler(boolean minOrMax,int functionOption) {
+    public PopulationHandler(Function chosenFunction, Main.extremeType extremeType ) {
 
-        this.minOrMax = minOrMax;
+        this.extremeType = extremeType;
         population = new ArrayList<>();
         random = new Random();
         evolver = new Evolver();
-        this.functionOption = functionOption;
+        this.chosenFunction = chosenFunction;
+
     }
+
+
 
     public ArrayList<Individual> getPopulation() {
 
@@ -32,7 +36,7 @@ public class PopulationHandler {
 
             for (int y = (int)Main.C; y <= (int)Main.D; ++y) {
 
-                population.add(new Individual(x, y, Main.DEFAULT_SIGMA_X, Main.DEFAULT_SIGMA_Y, minOrMax ,functionOption) );
+                population.add(new Individual(x, y, Main.DEFAULT_SIGMA_X, Main.DEFAULT_SIGMA_Y, extremeType , chosenFunction) );
 
             }
         }
@@ -49,5 +53,7 @@ public class PopulationHandler {
                 evolver.stepForwardOrDontMove( ind );
         }
     }
+
+
 
 }

@@ -40,7 +40,6 @@ public class Evolver {
 
         }
 
-        individual.normaliseValues(Main.A, Main.B, Main.C, Main.D);
 
     }
 

@@ -1,18 +1,29 @@
 package sample;
 
 public class Function {
+
     //TODO think up how to store a function.
 
-    public static double calculateValue(Individual individual,int option){
+    private static int type;
 
-        if (option == 1)
-            return Math.sin(individual.getX()) + Math.sin(individual.getY());
-        else if (option == 2)
-            return individual.getX()*individual.getX()*individual.getX() - individual.getY()*individual.getY();
-        else if (option == 3)
-            return Math.cos(individual.getX()) + Math.sin(individual.getY());
-        else if (option == 4)
-            return Math.tan(individual.getX()) + Math.cos(individual.getY());
+    public Function(int type) {
+
+        this.type = type;
+    }
+
+    public static double calculateValue( Point point ){
+
+        double x = point.getX();
+        double y = point.getY();
+
+        if (type == 1)
+            return Math.sin(x) + Math.sin(y);
+        else if (type == 2)
+            return x*x + y*y;
+        else if (type == 3)
+            return Math.cos(x) + Math.sin(y);
+        else if (type == 4)
+            return Math.tan(x) + Math.cos(y);
         return 0;
 
     }
