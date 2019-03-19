@@ -35,22 +35,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../FXML_Files/sample.fxml"));
         primaryStage.setTitle("Project PSZT");
         primaryStage.setResizable(false);
-
-        //primaryStage.setTitle("Chart");
-
-        final Axis<Number> xAxis = new NumberAxis( A, B , X_TICKS );
-        final Axis<Number> yAxis = new NumberAxis( C, D , Y_TICKS );
-
-        PopulationChart populationChart  = new PopulationChart(xAxis,yAxis);
-
-        PopulationHandler populationToFindMax = new PopulationHandler( true );
-        populationToFindMax.generateFirstPopulation();
-
-        PopulationHandler populationToFindMin = new PopulationHandler( false );
-        populationToFindMin.generateFirstPopulation();
-
         //populationChart.setValues(population.getPopulation());
-
        /* startAnimating();
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show(); */
@@ -59,35 +44,12 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        for (int i = 0; i < 1000; i ++) {
-
-            populationToFindMax.run();
-            populationToFindMin.run();
-
-
-
-        }
-
-        populationChart.setValuesToFindMax(populationToFindMax.getPopulation());
-        populationChart.setValuesToFindMin(populationToFindMin.getPopulation());
 
         // tworze dwie osie, oraz instancje klasy populationChart -
         // odpowiednik widoku - klase ktora rysuje przepiekne wykresy :)
 
        // populationToFindMax.showAllPointsWithValues();
 
-
-
-    }
-
-
-    private void startAnimating(){
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                System.out.println();
-            }
-        };
     }
 
     public static void main(String[] args) {

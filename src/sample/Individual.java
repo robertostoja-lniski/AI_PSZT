@@ -13,6 +13,7 @@ public class Individual extends Point{
     private int goodSteps;
     private int allSteps;
     private boolean minOrMax;
+    private int functionOption;
 
     /*
         konstruktory wywoluja konstruktor klasy bazowej i tyle
@@ -20,11 +21,11 @@ public class Individual extends Point{
     // nie powinno tu byc chyba tego min or max
     // wyglada dziwnie, ale postaram sie zmienic za jakis czas
 
-    public Individual(double x, double y, double sigX , double sigY, boolean minOrMax) {
+    public Individual(double x, double y, double sigX , double sigY, boolean minOrMax,int functionOption) {
 
         super( x,  y,  sigX,  sigY);
         this.minOrMax = minOrMax;
-        value = minOrMax ? calculateValue(this) : -calculateValue(this);
+        value = minOrMax ? calculateValue(this,functionOption) : -calculateValue(this,functionOption);
 
     }
 
@@ -105,7 +106,7 @@ public class Individual extends Point{
         double childX =  x + sigX * random.nextGaussian();
         double childY = y + sigY * random.nextGaussian();
 
-        return new Individual( childX , childY , sigX, sigY, this.minOrMax);
+        return new Individual( childX , childY , sigX, sigY, this.minOrMax,functionOption);
 
     }
 
