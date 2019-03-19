@@ -32,11 +32,11 @@ public class Main extends Application {
 
         // kod zakomentowany jest przed zmiana
 
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML_Files/sample.fxml"));
         primaryStage.setTitle("Project PSZT");
         primaryStage.setResizable(false);
 
-        primaryStage.setTitle("Chart");
+        //primaryStage.setTitle("Chart");
 
         final Axis<Number> xAxis = new NumberAxis( A, B , X_TICKS );
         final Axis<Number> yAxis = new NumberAxis( C, D , Y_TICKS );
@@ -55,7 +55,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show(); */
 
-        Scene scene  = new Scene(populationChart);
+        Scene scene  = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
 
