@@ -47,7 +47,7 @@ public class Controller{
         Stage chartStage = new Stage();
         Parent root = null;
         try{
-            root = FXMLLoader.load(getClass().getResource("../FXML_Files/chart.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../FXML_Files/sample.fxml"));
         }   catch(IOException e){
             e.printStackTrace();
         }
