@@ -14,9 +14,9 @@
          </font>
       </Label>
       <Button fx:id="bt1" layoutX="102.0" layoutY="180.0" mnemonicParsing="false" onAction="#handlebt1" prefHeight="61.0" text="F(x,y) = sin(x) + sin(y)" />
-      <Button fx:id="bt4" layoutX="364.0" layoutY="270.0" mnemonicParsing="false" onAction="#handlebt4" text="F(x,y) = tg(x) + ctg(y)" />
-      <Button fx:id="bt3" layoutX="102.0" layoutY="270.0" mnemonicParsing="false" onAction="#handlebt3" prefHeight="62.0" text="F(x,y) = cos(x) + sin(y)" />
       <Button fx:id="bt2" layoutX="364.0" layoutY="180.0" mnemonicParsing="false" onAction="#handlebt2" text="F(x,y) = x^3 - y^2" />
+      <Button fx:id="bt3" layoutX="102.0" layoutY="270.0" mnemonicParsing="false" onAction="#handlebt3" prefHeight="62.0" text="F(x,y) = cos(x) + sin(y)" />
+      <Button fx:id="bt4" layoutX="364.0" layoutY="270.0" mnemonicParsing="false" onAction="#handlebt4" text="F(x,y) = tg(x) + cos(y)" />
       <Label fx:id="desc" layoutX="153.0" layoutY="87.0" text="Prosze wybrac funkcje do generacji">
          <font>
             <Font size="19.0" />

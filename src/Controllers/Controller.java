@@ -20,6 +20,14 @@ import java.io.IOException;
 public class Controller{
 
 
+    public static final double A = -10;
+    public static final double B = 10;
+    public static final double C = -10;
+    public static final double D = 10;
+
+    public static final double X_TICKS = 2;
+    public static final double Y_TICKS = 2;
+
     @FXML
     private AnchorPane anPane;
 
@@ -42,37 +50,51 @@ public class Controller{
     private Label desc;
 
 
-    public void initStage(Button button){
-        button.getScene().getWindow().hide();
+    public void init(int functionOption){
+        final Axis<Number> xAxis = new NumberAxis( A, B , X_TICKS );
+        final Axis<Number> yAxis = new NumberAxis( C, D , Y_TICKS );
+
+        PopulationChart populationChart  = new PopulationChart(xAxis,yAxis);
+
+        PopulationHandler populationToFindMax = new PopulationHandler( true,functionOption );
+        populationToFindMax.generateFirstPopulation();
+
+        PopulationHandler populationToFindMin = new PopulationHandler( false, functionOption);
+        populationToFindMin.generateFirstPopulation();
+
+
         Stage chartStage = new Stage();
-        Parent root = null;
-        try{
-            root = FXMLLoader.load(getClass().getResource("../FXML_Files/sample.fxml"));
-        }   catch(IOException e){
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(root);
+        Scene scene  = new Scene(populationChart);
         chartStage.setScene(scene);
         chartStage.show();
+
+        for (int i = 0; i < 1000; i ++) {
+
+            populationToFindMax.run();
+            populationToFindMin.run();
+        }
+
+        populationChart.setValuesToFindMax(populationToFindMax.getPopulation());
+        populationChart.setValuesToFindMin(populationToFindMin.getPopulation());
     }
     @FXML
     void handlebt1(ActionEvent event) {
-        initStage(bt1);
+        init(1);
     }
 
     @FXML
     void handlebt2(ActionEvent event) {
-        initStage(bt2);
+        init(2);
     }
 
     @FXML
     void handlebt3(ActionEvent event) {
-        initStage(bt3);
+        init(3);
     }
 
     @FXML
     void handlebt4(ActionEvent event) {
-        initStage(bt4);
+        init(4);
     }
 
 }
