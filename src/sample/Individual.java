@@ -33,6 +33,16 @@ public class Individual extends Point{
     ale nie dziala individual = child
     jak ogarne czemu tak jest to zmienie
      */
+    public void normaliseValues( double minX, double maxX, double minY, double maxY) {
+
+        // x nie większy niż najwiekszy mozliwy x
+        x = Math.min( x , maxX);
+        // x nie mniejszy niz najmniejszy mozliwy x
+        x = Math.max( x , minX);
+        // analogicznie dla y
+        y = Math.min( y , maxY);
+        y = Math.max( y , minY);
+    }
     public void becomeAChild(Individual child) {
 
         this.x = child.getX();
@@ -45,6 +55,7 @@ public class Individual extends Point{
         this.fitness = child.getFitness();
 
     }
+
     public double getFitness() {
         return fitness;
     }
