@@ -1,0 +1,17 @@
+#anPane{
+    -fx-background-color: #333;
+
+}
+#title{
+    -fx-text-fill: #fff;
+}
+
+.button{
+    -fx-background-color: #eaa000;
+    -fx-text-fill:#000;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 70px;
+}
+#desc{
+    -fx-text-fill:#fff;
+}
