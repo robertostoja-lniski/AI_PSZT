@@ -22,7 +22,7 @@ public class Main extends Application {
     public static final double DEFAULT_SIGMA_X = RANGE_X * 0.3;
     public static final double DEFAULT_SIGMA_Y = RANGE_Y * 0.3;
 
-    public static final int GENERATION_NUMBER = 1000;
+    public static double GENERATION_NUMBER = 1000;
 
     public enum extremeType{ MIN, MAX};
 
