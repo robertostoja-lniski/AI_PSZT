@@ -37,7 +37,7 @@ public class PopulationHandler {
             for (double y = Main.C; y <= Main.D; y += Main.ACCURACY_Y) {
 
                 population.add(new Individual(x, y, Main.DEFAULT_SIGMA_X, Main.DEFAULT_SIGMA_Y, extremeType , chosenFunction) );
-                System.out.println(x + " " + y);
+                //System.out.println(x + " " + y);
             }
         }
     }
