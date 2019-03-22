@@ -19,7 +19,7 @@ public class Function {
         if (type == 1)
             return Math.sin(x) + Math.sin(y);
         else if (type == 2)
-            return x*x + y*y;
+            return Math.cos(20*x)/(x*x + 1) + Math.sin(10*y) + y/3;
         else if (type == 3)
             return Math.cos(x) + Math.sin(y);
         else if (type == 4)

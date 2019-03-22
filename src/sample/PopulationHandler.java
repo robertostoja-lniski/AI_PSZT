@@ -32,12 +32,12 @@ public class PopulationHandler {
 
     public void generateFirstPopulation() {
 
-        for (int x = (int)Main.A; x <= (int)Main.B; ++x) {
+        for (double x = Main.A; x <= Main.B; x += Main.ACCURACY_X) {
 
-            for (int y = (int)Main.C; y <= (int)Main.D; ++y) {
+            for (double y = Main.C; y <= Main.D; y += Main.ACCURACY_Y) {
 
                 population.add(new Individual(x, y, Main.DEFAULT_SIGMA_X, Main.DEFAULT_SIGMA_Y, extremeType , chosenFunction) );
-
+                System.out.println(x + " " + y);
             }
         }
     }

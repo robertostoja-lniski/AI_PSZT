@@ -16,7 +16,7 @@
          </font>
       </Label>
       <Button fx:id="bt1" layoutX="102.0" layoutY="211.0" mnemonicParsing="false" onAction="#handlebt1" prefHeight="76.0" text="F(x,y) = sin(x) + sin(y)" AnchorPane.rightAnchor="325.20000000000005" AnchorPane.topAnchor="211.0" />
-      <Button fx:id="bt2" layoutX="311.0" layoutY="137.0" mnemonicParsing="false" onAction="#handlebt2" prefHeight="116.0" prefWidth="122.0" text="F(x,y) = x^2 + y^2" AnchorPane.rightAnchor="116.20000000000005" />
+      <Button fx:id="bt2" layoutX="311.0" layoutY="137.0" mnemonicParsing="false" onAction="#handlebt2" prefHeight="116.0" prefWidth="122.0" text="F(x,y) = cos(20*x)/(x*x + 1) + sin(10*y) + y/3" wrapText="true" AnchorPane.rightAnchor="116.20000000000005" />
       <Button fx:id="bt3" layoutX="102.0" layoutY="137.0" mnemonicParsing="false" onAction="#handlebt3" prefHeight="88.0" prefWidth="198.0" text="F(x,y) = cos(x) + sin(y)" AnchorPane.bottomAnchor="205.0" AnchorPane.topAnchor="137.0" />
       <Button fx:id="bt4" layoutX="311.0" layoutY="211.0" mnemonicParsing="false" onAction="#handlebt4" text="F(x,y) = tg(x) + cos(y)" AnchorPane.bottomAnchor="131.0" AnchorPane.rightAnchor="116.20000000000005" />
       <Label fx:id="desc" layoutX="152.0" layoutY="77.0" minWidth="-Infinity" text="Proszę wybrać funkcję do generacji" textAlignment="CENTER">

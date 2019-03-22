@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.Function;
 import sample.Main;
@@ -21,12 +22,6 @@ import sample.PopulationHandler;
 import java.io.IOException;
 
 public class Controller{
-
-
-    public static double A = -10;
-    public static double B = 10;
-    public static double C = -10;
-    public static double D = 10;
 
     public static final double X_TICKS = 2;
     public static final double Y_TICKS = 2;
@@ -71,19 +66,33 @@ public class Controller{
     public void init(int functionOption){
 
         Function chosenFunction = new Function( functionOption );
-        A = getAValue();
-        B = getBValue();
-        C = getCValue();
-        D = getDValue();
+        Main.A = getAValue();
+        Main.B = getBValue();
+        Main.C = getCValue();
+        Main.D = getDValue();
         Main.GENERATION_NUMBER = getSliderValue();
+
+
+        Main.RANGE_X = Main.B - Main.A; // RANDOM COORDINATES FROM -100 TO 100;
+        Main.RANGE_Y = Main.D - Main.C;  // CHANGABLE IF NEEDED.
+
+        Main.DEFAULT_SIGMA_X = Main.RANGE_X * 0.03;
+        Main.DEFAULT_SIGMA_Y = Main.RANGE_Y * 0.03;
+
+        Main.GENERATION_NUMBER = 40;
+        Main.ACCURACY_X = Main.RANGE_X / Main.GENERATION_NUMBER;
+        Main.ACCURACY_Y = Main.RANGE_Y / Main.GENERATION_NUMBER;
+
+
+
         PopulationHandler populationToFindMax = new PopulationHandler( chosenFunction, Main.extremeType.MAX);
         populationToFindMax.generateFirstPopulation();
 
         PopulationHandler populationToFindMin = new PopulationHandler( chosenFunction, Main.extremeType.MIN);
         populationToFindMin.generateFirstPopulation();
 
-        final Axis<Number> xAxis = new NumberAxis( A, B , X_TICKS );
-        final Axis<Number> yAxis = new NumberAxis( C, D , Y_TICKS );
+        final Axis<Number> xAxis = new NumberAxis( Main.A, Main.B , X_TICKS );
+        final Axis<Number> yAxis = new NumberAxis( Main.C, Main.D , Y_TICKS );
 
         PopulationChart populationChart  = new PopulationChart(xAxis,yAxis);
 
@@ -98,6 +107,7 @@ public class Controller{
             populationToFindMin.run();
         }
 
+       // populationToFindMax.showAllPointsWithValues();
         populationChart.setValuesToFindMax(populationToFindMax.getPopulation());
         populationChart.setValuesToFindMin(populationToFindMin.getPopulation());
        // populationToFindMin.showAllPointsWithValues();

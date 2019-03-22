@@ -64,7 +64,7 @@ public class PopulationChart extends BubbleChart {
           double x = i.getX();
           double y = i.getY();
 
-          series.getData().add(new XYChart.Data( x , y , 0.2));
+          series.getData().add(new XYChart.Data( x , y , 0.08));
 
         }
 
@@ -85,4 +85,7 @@ public class PopulationChart extends BubbleChart {
 
     }
 
+    public Series getSeriesMax() {
+        return seriesMax;
+    }
 }

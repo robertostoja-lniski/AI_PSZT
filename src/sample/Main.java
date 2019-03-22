@@ -11,18 +11,21 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static final double A = -10;
-    public static final double B = 10;
-    public static final double C = -10;
-    public static final double D = 10;
+    public static double A = -10;
+    public static double B = 10;
+    public static double C = -10;
+    public static double D = 10;
 
-    public static final double RANGE_X = B - A; // RANDOM COORDINATES FROM -100 TO 100;
-    public static final double RANGE_Y = D - C;  // CHANGABLE IF NEEDED.
+    public static double RANGE_X = B - A; // RANDOM COORDINATES FROM -100 TO 100;
+    public static double RANGE_Y = D - C;  // CHANGABLE IF NEEDED.
 
-    public static final double DEFAULT_SIGMA_X = RANGE_X * 0.3;
-    public static final double DEFAULT_SIGMA_Y = RANGE_Y * 0.3;
+    public static double DEFAULT_SIGMA_X = RANGE_X * 0.03;
+    public static double DEFAULT_SIGMA_Y = RANGE_Y * 0.03;
 
-    public static double GENERATION_NUMBER = 1000;
+    public static double GENERATION_NUMBER = 40;
+    public static double ACCURACY_X = RANGE_X / GENERATION_NUMBER;
+    public static double ACCURACY_Y = RANGE_Y / GENERATION_NUMBER;
+
 
     public enum extremeType{ MIN, MAX};
 
@@ -40,7 +43,9 @@ public class Main extends Application {
 
 
     }
-
+    public void setPublicParams() {
+        // TODO
+    }
     public static void main(String[] args) {
         launch(args);
     }
