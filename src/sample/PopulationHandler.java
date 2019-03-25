@@ -32,6 +32,7 @@ public class PopulationHandler {
 
     public void generateFirstPopulation() {
 
+
         for (double x = Main.A; x <= Main.B; x += Main.ACCURACY_X) {
 
             for (double y = Main.C; y <= Main.D; y += Main.ACCURACY_Y) {
@@ -40,6 +41,7 @@ public class PopulationHandler {
                 //System.out.println(x + " " + y);
             }
         }
+
     }
 
     public void showAllPointsWithValues(){

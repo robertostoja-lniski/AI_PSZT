@@ -72,16 +72,14 @@ public class Controller{
         Main.D = getDValue();
         Main.GENERATION_NUMBER = getSliderValue();
 
-
         Main.RANGE_X = Main.B - Main.A; // RANDOM COORDINATES FROM -100 TO 100;
         Main.RANGE_Y = Main.D - Main.C;  // CHANGABLE IF NEEDED.
 
-        Main.DEFAULT_SIGMA_X = Main.RANGE_X * 0.03;
-        Main.DEFAULT_SIGMA_Y = Main.RANGE_Y * 0.03;
+        Main.DEFAULT_SIGMA_X = Main.RANGE_X * Main.DEFAULT_SIGMA_PARAM;
+        Main.DEFAULT_SIGMA_Y = Main.RANGE_Y * Main.DEFAULT_SIGMA_PARAM;
 
-        Main.GENERATION_NUMBER = 40;
-        Main.ACCURACY_X = Main.RANGE_X / Main.GENERATION_NUMBER;
-        Main.ACCURACY_Y = Main.RANGE_Y / Main.GENERATION_NUMBER;
+        Main.ACCURACY_X = Main.RANGE_X / Main.INDIVIDUALS_IN_POPULATION;
+        Main.ACCURACY_Y = Main.RANGE_Y / Main.INDIVIDUALS_IN_POPULATION;
 
 
 
@@ -101,10 +99,12 @@ public class Controller{
         chartStage.setScene(scene);
         chartStage.show();
 
+
         for (int i = 0; i < Main.GENERATION_NUMBER; i ++) {
 
             populationToFindMax.run();
             populationToFindMin.run();
+
         }
 
        // populationToFindMax.showAllPointsWithValues();

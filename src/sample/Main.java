@@ -16,15 +16,20 @@ public class Main extends Application {
     public static double C = -10;
     public static double D = 10;
 
+
     public static double RANGE_X = B - A; // RANDOM COORDINATES FROM -100 TO 100;
     public static double RANGE_Y = D - C;  // CHANGABLE IF NEEDED.
 
-    public static double DEFAULT_SIGMA_X = RANGE_X * 0.03;
-    public static double DEFAULT_SIGMA_Y = RANGE_Y * 0.03;
+    public static double DEFAULT_SIGMA_PARAM = 0.03;
+
+    public static double DEFAULT_SIGMA_X = RANGE_X * DEFAULT_SIGMA_PARAM;
+    public static double DEFAULT_SIGMA_Y = RANGE_Y * DEFAULT_SIGMA_PARAM;
 
     public static double GENERATION_NUMBER = 40;
-    public static double ACCURACY_X = RANGE_X / GENERATION_NUMBER;
-    public static double ACCURACY_Y = RANGE_Y / GENERATION_NUMBER;
+    public static int INDIVIDUALS_IN_POPULATION = 40;
+
+    public static double ACCURACY_X = RANGE_X / INDIVIDUALS_IN_POPULATION;
+    public static double ACCURACY_Y = RANGE_Y / INDIVIDUALS_IN_POPULATION;
 
 
     public enum extremeType{ MIN, MAX};
